@@ -5,8 +5,12 @@ VOLUME /tmp
 #Adding/ copying the jar to docker
 ADD gs-spring-boot-docker-0.1.0.jar app.jar
 #Giving the jar permission to all
+RUN sh -c 'echo "Building Here"'
+RUN sh -c 'ls -l'
 RUN sh -c 'chmod 777 /app.jar'
+RUN sh -c 'ls -l'
 #Checking the jar permission
 RUN sh -c 'touch /app.jar'
 #THis is the Entrypoint as soon the docker starts
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
+RUN sh -c 'echo "Succesfully built?"'
